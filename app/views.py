@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from app.forms import SellersForm, ProductsForm, CategoriesForm, MarketplacesForm
 from app.models import Categories, Products, Marketplaces, Sellers
-from django.core.paginator import Paginator
+
 
 # Create your views here.
+
+# Página inicial do projeto
 def home(request):
     return render(request, 'index.html')
 
+# Menus
 def sellers(request):
     data = {}
     data['db'] = Sellers.objects.all()
@@ -32,6 +35,7 @@ def marketplaces(request):
     data['db'] = Marketplaces.objects.all()
     return render(request, 'marketplaces.html', data)
 
+#Formulários - Cadastro e Atualização dos dados
 def categoriesForm(request):
     data = {}
     data['formCategories'] = CategoriesForm()
@@ -52,6 +56,7 @@ def sellersForm(request):
     data['formSellers'] = SellersForm()
     return render(request, 'sellersForm.html', data)
 
+# Funções que criam o novo registro
 def createCategories(request):
     form = CategoriesForm(request.POST or None)
     if form.is_valid():
@@ -76,6 +81,7 @@ def createSellers(request):
         form.save()
         return redirect('sellers')
 
+# Funções que permitem a leitura de cada dado dentro das categorias
 def viewCategorie(request, pk):
     data = {}
     data['db'] = Categories.objects.get(pk=pk)
@@ -96,6 +102,7 @@ def viewProduct(request, pk):
     data['db'] = Products.objects.get(pk=pk)
     return render(request, 'viewProduct.html', data)
 
+#Funções que editam e atualizam os registros
 def editCategorie(request, pk):
     data = {}
     data['db'] = Categories.objects.get(pk=pk)
@@ -152,6 +159,7 @@ def updateProduct(request, pk):
         form.save()
         return redirect('products')
 
+#Funções que deletam os registros (Javascript faz a confirmação delas)
 def deleteCategorie(request, pk):
     db = Categories.objects.get(pk=pk)
     db.delete()

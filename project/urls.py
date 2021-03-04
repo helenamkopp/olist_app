@@ -22,31 +22,54 @@ from app.views import home, sellers, products, categories, marketplaces, categor
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Rota da home (pag. inicial do projeto)
     path('', home, name='home'),
+
+
+    # Rotas das páginas iniciais de cada "categoria" do projeto
     path('sellers/', sellers, name='sellers'),
     path('products/', products, name='products'),
     path('categories/', categories, name='categories'),
     path('marketplaces/', marketplaces, name='marketplaces'),
+
+
+    # Rotas dos formulários
     path('categoriesForm/', categoriesForm, name='categoriesForm'),
     path('marketplacesForm/', marketplacesForm, name='marketplacesForm'),
     path('productsForm/', productsForm, name='productsForm'),
     path('sellersForm/', sellersForm, name='sellersForm'),
+
+
+    # Rotas da criação de um novo dado
     path('createCategories/', createCategories, name='createCategories'),
     path('createMarketplaces/', createMarketplaces, name='createMarketplaces'),
     path('createProducts/', createProducts, name='createProducts'),
     path('createSellers/', createSellers, name='createSellers'),
+
+
+    # Rotas de visualizaçao de cada dado
     path('viewCategorie/<int:pk>/', viewCategorie, name='viewCategorie'),
     path('viewMarketplace/<int:pk>/', viewMarketplace, name='viewMarketplace'),
     path('viewSeller/<int:pk>/', viewSeller, name='viewSeller'),
     path('viewProduct/<int:pk>/', viewProduct, name='viewProduct'),
+
+
+    # Rotas de edição de cada dado
     path('editCategorie/<int:pk>/', editCategorie, name='editCategorie'),
-    path('updateCategorie/<int:pk>/', updateCategorie, name='updateCategorie'),
     path('editMarketplace/<int:pk>/', editMarketplace, name='editMarketplace'),
-    path('updateMarketplace/<int:pk>/', updateMarketplace, name='updateMarketplace'),
     path('editSeller/<int:pk>/', editSeller, name='editSeller'),
-    path('updateSeller/<int:pk>/', updateSeller, name='updateSeller'),
     path('editProduct/<int:pk>/', editProduct, name='editProduct'),
+
+
+    # Rotas de atualização das edições de cada dado
+    path('updateCategorie/<int:pk>/', updateCategorie, name='updateCategorie'),
+    path('updateMarketplace/<int:pk>/', updateMarketplace, name='updateMarketplace'),
+    path('updateSeller/<int:pk>/', updateSeller, name='updateSeller'),
     path('updateProduct/<int:pk>/', updateProduct, name='updateProduct'),
+
+
+    # Rotas de exclusão de cada dado
     path('deleteCategorie/<int:pk>/', deleteCategorie, name='deleteCategorie'),
     path('deleteMarketplace/<int:pk>/', deleteMarketplace, name='deleteMarketplace'),
     path('deleteSeller/<int:pk>/', deleteSeller, name='deleteSeller'),
