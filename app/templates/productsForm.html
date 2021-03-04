@@ -17,7 +17,9 @@
     </div>
 
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <form name="form" id="form" action="/createProducts/" method="post">
+        <div id="result"></div>
+
+        <form name="form" id="form" action="{% if db %}/updateProduct/{{db.id}}/{%else%}/createProducts/{% endif %}" method="post">
             {% csrf_token %}
             <div class="form-group mt-4">Nome: {{formProducts.name}}</div>
             <div class="form-group mt-4">Descrição: {{formProducts.description}}</div>
@@ -26,5 +28,7 @@
             <input type="submit" class="btn btn-success mt-4" value="Salvar">
         </form>
     </div>
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>

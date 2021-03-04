@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>DESAFIO OLIST</title>
@@ -33,12 +33,18 @@
               <th>{{dbs.id}}</th>
               <td>{{dbs.name}}</td>
               <td>{{dbs.description}}</td>
-                <td></td>
+                <td>
+                    <a href="/viewCategorie/{{dbs.id}}" class="btn btn-dark">Visualizar</a>
+                    <a href="/editCategorie/{{dbs.id}}" class="btn btn-primary">Atualizar</a>
+                    <a href="/deleteCategorie/{{dbs.id}}" class="btn btn-danger btnDel">Deletar</a>
+                </td>
             </tr>
           {% endfor %}
 
           </tbody>
         </table>
     </div>
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>

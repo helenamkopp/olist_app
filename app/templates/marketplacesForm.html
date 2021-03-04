@@ -17,7 +17,9 @@
     </div>
 
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <form name="form" id="form" action="/createMarketplace/" method="post">
+        <div id="result"></div>
+
+        <form name="form" id="form" action="{% if db %}/updateMarketplace/{{db.id}}/{%else%}/createMarketplaces/{% endif %}" method="post">
             {% csrf_token %}
             <div class="form-group mt-4">Nome: {{formMarketPlaces.name}}</div>
             <div class="form-group mt-4">Descrição: {{formMarketPlaces.description}}</div>
@@ -28,5 +30,7 @@
             <input type="submit" class="btn btn-success mt-4" value="Salvar">
         </form>
     </div>
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>

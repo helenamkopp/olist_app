@@ -41,11 +41,17 @@
                 <td>{{dbs.phone}}</td>
               <td>{{dbs.email}}</td>
               <td>{{dbs.technical_manager}}</td>
-                <td></td>
+                <td>
+                    <a href="/viewMarketplace/{{dbs.id}}" class="btn btn-dark">Visualizar</a>
+                    <a href="/editMarketplace/{{dbs.id}}" class="btn btn-primary">Atualizar</a>
+                    <a href="/deleteMarketplace/{{dbs.id}}" class="btn btn-danger btnDel">Deletar</a>
+                </td>
             </tr>
           {% endfor %}
           </tbody>
         </table>
     </div>
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>
